@@ -5,42 +5,34 @@
 @layer base {
   :root {
     --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --rose-pink: #ffd1dc; /* blush */
+    --rose-100: #ffe4e6;
+    --gold: #f8d776;
+    --lavender: #e6d2ff;
+    --ivory: #fffff0;
   }
 
-  html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  body {
-    @apply antialiased;
-  }
+  html { font-family: var(--font-sans); font-feature-settings: "rlig" 1, "calt" 1; }
+  body { @apply antialiased; background: radial-gradient(1200px 600px at 10% -10%, rgba(255,192,203,.25), transparent), radial-gradient(800px 500px at 90% 120%, rgba(230,210,255,.25), transparent); }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Extra animations and effects */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
+  @keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.02); } 50% { transform: scale(1.05); } 75% { transform: scale(1.02); } }
+  .heartbeat { animation: heartbeat 2.2s ease-in-out infinite; }
+
+  @keyframes floaty { 0% { transform: translateY(0); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0); } }
+  .floaty { animation: floaty 8s ease-in-out infinite; }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); opacity: .6; }
+    50% { transform: translateY(-20px) translateX(10px); opacity: .9; }
+    100% { transform: translateY(0) translateX(0); opacity: .6; }
   }
 
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
+  .bokeh {
+    background-image: radial-gradient(180px 120px at 20% 10%, rgba(255, 240, 245, 0.45), transparent), radial-gradient(160px 100px at 80% 20%, rgba(230, 210, 255, 0.35), transparent), radial-gradient(200px 140px at 50% 90%, rgba(255, 215, 170, 0.25), transparent);
+    filter: saturate(120%);
+    mix-blend-mode: screen;
   }
 }
